@@ -1,0 +1,181 @@
+/* Discipline Overview*/
+/* ////////////////////////////////////////////////////// */
+
+.discipline-overview {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.discipline-overview-content {
+  padding: 10px 5px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--font-color-i-base);
+  width: 100%;
+
+  &__not {
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__not-icon {
+    width: 250px;
+    opacity: 0.4;
+
+    &:hover {
+      opacity: 1;
+      transition: all 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    }
+
+    transition: all 0.2s ease-out;
+  }
+
+  &__not-title {
+    color: var(--font-color-i-base);
+    font-size: 2rem;
+  }
+}
+
+.discipline-overview-lecturers {
+  padding: 20px 5px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__title {
+    font-size: 2rem;
+    color: var(--font-color-i-base-darker);
+  }
+
+  &__add {
+    font-size: 2rem;
+    color: var(--font-color-i-base-darker);
+    opacity: 0.1;
+    width: 20px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+      transition: all 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+      transform: scale(1.25);
+    }
+    transition: all 0.2s ease-out;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  &__item {
+    color: var(--font-color-i-base);
+    font-weight: 500;
+
+    &.item-content {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: row;
+      min-width: 250px;
+    }
+
+    .item-content {
+      &__title {
+        font-size: 1.5rem;
+        margin-left: 10px;
+      }
+
+      &__icon {
+        pointer-events: none;
+        min-width: 24px;
+        min-height: 24px;
+        fill: var(--font-color-i-base);
+      }
+
+      &__delete {
+        cursor: pointer;
+        fill: orangered;
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+
+.discipline-overview-info {
+  padding: 20px 5px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  opacity: 0.4;
+
+  &:hover {
+    opacity: 1;
+    transition: all 0.1s ease-in;
+  }
+  transition: all 0.1s ease-out;
+
+  &__title {
+    font-size: 2rem;
+    color: var(--font-color-i-base-darker);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  &__item {
+    color: var(--font-color-i-base);
+    font-weight: 500;
+
+    &.item-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      min-width: 250px;
+      line-height: 2;
+    }
+
+    .item-content {
+      &__title {
+        font-size: 1.4rem;
+        margin-left: 10px;
+        fill: var(--font-color-i-base-darker);
+      }
+
+      &__info {
+        font-size: 1.5rem;
+        fill: var(--font-color-i-base);
+        padding-left: 5px;
+      }
+    }
+  }
+}
+
+/* ////////////////////////////////////////////////////// */

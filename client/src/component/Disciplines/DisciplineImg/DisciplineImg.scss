@@ -1,0 +1,56 @@
+/* Discipline Img */
+/* ////////////////////////////////////////////////////// */
+
+.disciplines-img {
+  position: relative;
+
+  &__image {
+    width: 100%;
+    position: relative;
+    background-position: bottom, center;
+    background-repeat: repeat-x, no-repeat;
+    background-color: #000;
+    background-size: auto, cover;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    max-height: 350px;
+    min-height: 80px;
+    height: calc(100vw / 4);
+
+    // user-select: none;
+    // overflow: hidden;
+    // pointer-events: none;
+    // background-position: bottom, center;
+    // background-repeat: repeat-x, no-repeat;
+    // background-color: #000;
+    // background-size: auto, cover;
+    // max-height: 350px;
+  }
+
+  &__bread {
+    position: absolute;
+    left: 55px;
+    top: 5px;
+    * {
+      font-weight: 500;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+/* ////////////////////////////////////////////////////// */
+
+@media screen and (max-width: 1368px) {
+  .disciplines-img {
+    &__bread {
+      left: 5px;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+.not-found {
+  min-height: 740px;
+  &__icon {
+    position: absolute;
+    width: 500px;
+
+    left: 0;
+    top: 0;
+  }
+
+  &__title {
+    margin-top: 100px;
+    font-size: 3rem;
+    text-align: center;
+    color: var(--font-color-i-base-darker);
+  }
+
+  animation: fadein 0.25s ease-in;
+}
+
+@media screen and (max-width: 1025px) {
+  .not-found {
+    &__icon {
+      width: 400px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .not-found {
+    &__icon {
+      width: 300px;
+    }
+  }
+}

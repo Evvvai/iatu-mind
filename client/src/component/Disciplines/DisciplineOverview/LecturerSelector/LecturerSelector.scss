@@ -1,0 +1,135 @@
+/* Discipines Selector */
+/* ////////////////////////////////////////////////////// */
+
+.lecturer-selector {
+  padding: 10px;
+
+  &__content {
+    display: flex;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-grow: 1;
+  }
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    padding-bottom: 4px;
+  }
+
+  &__item {
+    cursor: pointer;
+    padding: 5px 10px;
+    border-bottom: 3px solid transparent;
+    text-align: center;
+    color: var(--font-color-base-darker);
+
+    &:hover {
+      border-bottom: 3px solid var(--shadow-color-active-darker);
+      // transform: scale(1.05);
+      * {
+        // font-weight: 700 !important;
+      }
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    &.active {
+      color: var(--font-color-base);
+      border-bottom: 3px solid var(--shadow-color-active);
+      font-weight: 900;
+      * {
+        font-weight: 900 !important;
+      }
+    }
+  }
+
+  &__result {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 25px 0;
+  }
+
+  .result-content {
+    &__type {
+      width: 32px;
+      height: 32px;
+      border: 2px dashed var(--border-base-color-lighter);
+    }
+    &__teacher {
+      min-width: 150px;
+      height: 32px;
+      border: 2px dashed var(--border-base-color-lighter);
+      color: var(--font-color-base);
+      padding: 0 5px;
+    }
+  }
+
+  &__submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 15 px;
+
+    background-color: var(--font-color-submit);
+    color: var(--font-color-i-base-darker);
+
+    cursor: pointer;
+    font-weight: 700;
+    outline: none;
+    border: none;
+    border-radius: 25px;
+
+    width: 250px;
+    height: 40px;
+    text-align: center;
+    font-size: 2.5rem;
+  }
+}
+
+.lecturer-selector-header {
+  position: relative;
+
+  &__search {
+    font-size: 1.7rem;
+    background-color: #3a3a3a;
+    border-radius: 20px;
+    border: 0px;
+    cursor: pointer;
+
+    width: 100%;
+    height: 35px;
+    z-index: 1;
+
+    padding: 0 10px;
+    margin-bottom: 25px;
+
+    color: var(--font-color-base);
+
+    &:focus {
+      cursor: text;
+      outline: none;
+      border: 0px solid var(--shadow-color-hover);
+      box-shadow: 0 0 5px var(--shadow-color-hover);
+    }
+  }
+
+  &__close {
+    position: absolute;
+    cursor: pointer;
+    right: 10px;
+    top: 0;
+
+    fill: var(--background-submit);
+    height: 35px;
+  }
+}
+
+/* ////////////////////////////////////////////////////// */

@@ -1,0 +1,87 @@
+/* Discipline Task */
+/* ////////////////////////////////////////////////////// */
+
+.task-form {
+  display: flex;
+  flex-direction: row;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+  width: 100%;
+
+  padding: 50px 0;
+
+  .form-group {
+    flex-basis: 350px;
+    flex-grow: 1;
+    flex-shrink: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 5px 0;
+    width: 100%;
+
+    &__label {
+      font-size: 1.25rem;
+      text-transform: uppercase;
+    }
+
+    &__input {
+      font-size: 1.4rem;
+      background-color: var(--background-input);
+      border: 0px;
+      cursor: pointer;
+
+      min-height: 35px;
+      height: 100%;
+      width: 100%;
+      max-width: 1000px;
+
+      z-index: 1;
+
+      color: var(--font-color-base);
+      outline: 1px solid var(--background-input-border);
+      border-bottom: 0px solid var(--shadow-color-active-darker);
+
+      border-radius: 3px;
+
+      &.error {
+        outline: 1px solid var(--font-color-error);
+      }
+
+      &:hover {
+        cursor: text;
+        border-bottom: 2px solid var(--shadow-color-active-darker);
+        transition: all 0.2s ease-in;
+      }
+
+      &:focus {
+        cursor: text;
+        border-bottom: 2px solid var(--shadow-color-active);
+        transition: all 0.2s ease-in;
+      }
+      transition: all 0.2s ease-in;
+    }
+
+    &__submit {
+      border: 0px;
+      background-color: var(--background-submit);
+      width: 300px;
+      height: 40px;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--font-color-base);
+      border-radius: 35px;
+      margin: 0 auto;
+
+      &:hover {
+        background-color: var(--background-submit-darker);
+      }
+    }
+  }
+}
+
+/* ////////////////////////////////////////////////////// */

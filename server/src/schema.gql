@@ -1,0 +1,385 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Faculty {
+  id: Int!
+  name: String
+  groups: [Group!]
+}
+
+type Discipline {
+  id: Int!
+  name: String!
+  description: String!
+  actually: Boolean!
+  groupsDisciplines: [GroupDiscipline!]
+}
+
+type Period {
+  id: Int!
+  year: Int!
+  half: Int!
+  groupsDisciplines: [GroupDiscipline!]
+}
+
+type FinalTask {
+  id: Int!
+  name: String!
+}
+
+type Lecturers {
+  id: Int!
+  shortName: String!
+  fullName: String!
+}
+
+type DisciplineLecturers {
+  lecturerId: Int!
+  groupDisciplineId: Int!
+  role: RoleLecturer!
+  lecturer: Lecturers!
+}
+
+enum RoleLecturer {
+  LECTURE
+  PRACTICE
+  LABORATORN
+}
+
+type User {
+  id: Int!
+  firstName: String!
+  lastName: String!
+  email: String!
+  login: String!
+  password: String!
+  dateReg: DateTime!
+  lastLogin: DateTime!
+  role: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+"""Taks completes status"""
+type TaskComplete {
+  """Unique indentificator"""
+  id: Int
+
+  """Status complete"""
+  status: TaskStatus
+
+  """User id"""
+  userId: Int
+
+  """Discipline task id"""
+  disciplineTaskId: Int
+
+  """Date updated"""
+  updatedAt: DateTime
+}
+
+enum TaskStatus {
+  COMPLETE
+  NONE
+}
+
+type DisciplineTask {
+  """Discipline Id"""
+  id: Int!
+
+  """Position in task list"""
+  index: Int!
+
+  """Group Discipline Id"""
+  groupDisciplineId: Int!
+
+  """Task title"""
+  title: String!
+
+  """Description task"""
+  description: String!
+
+  """Full description task in HTML"""
+  fullDescription: String
+
+  """Time when task end"""
+  endTime: DateTime
+
+  """Date added"""
+  createdAt: DateTime!
+
+  """Date updated"""
+  updatedAt: DateTime!
+
+  """Author task"""
+  authorId: Int!
+  taskStatus(userId: Int!): TaskComplete!
+  author: User!
+}
+
+type GroupDiscipline {
+  id: Int!
+  groupId: Int!
+  disciplineId: Int!
+  periodId: Int!
+  finalTaskId: Int!
+  isCourse: Int!
+  discipline: Discipline!
+  finalTask: FinalTask!
+  disciplineLecturer: [DisciplineLecturers!]!
+  disciplineTasks: [DisciplineTask!]!
+}
+
+type ScheduleTicket {
+  id: Int!
+  text: String!
+  dateAdd: String
+  groupId: Int!
+  group: Group!
+}
+
+type Group {
+  id: Int!
+  name: String
+  facultyId: Int
+  faculty: Faculty!
+  tickets: [ScheduleTicket!]!
+  groupsDisciplines: [GroupDiscipline!]
+}
+
+type UserToken {
+  token: String!
+  user: User!
+}
+
+type Log {
+  """Id"""
+  id: Int!
+  ip: String!
+  route: String!
+  body: String!
+  ms: Float!
+
+  """Date added"""
+  createdAt: DateTime!
+}
+
+type Schedule {
+  id: Int!
+  date: DateTime!
+  class: String!
+  timeStart: String!
+  timeStop: String!
+  discipline: String!
+  type: String!
+  teacher: String!
+  cabinet: String!
+  subgroup: Float!
+}
+
+type Query {
+  groups: [Group!]!
+  faculties: [Faculty!]!
+  faculty(id: Int!): Faculty!
+  scheduleTicketsWeek(input: ScheduleTicketBetweenInput!): [ScheduleTicket!]!
+  scheduleTickets(input: ScheduleTicketInput!): [ScheduleTicket!]!
+  period(id: Int!): Period!
+  periods: [Period!]!
+  users: [User!]!
+  findOne(id: Int!): User!
+  disciplinesAvailable(disciplineInput: FindAvailableDisciplineInput!): [Discipline!]!
+  disciplines(input: DisciplineInput!): [Discipline!]!
+  getExistDisciplines(input: DefaultGroupDisciplinesInput!): [GroupDiscipline!]!
+  getExtendDiscipline(input: DefaultGroupDisciplinesInput!): GroupDiscipline!
+  finalTasks: [FinalTask!]!
+  lecturer(id: Int!): Lecturers!
+  lecturers: [Lecturers!]!
+  disciplineTasks(groupDisciplineId: Int!): [DisciplineTask!]!
+  disciplineTask(id: Int!): DisciplineTask!
+  taskCompletes: [TaskComplete!]!
+  taskComplete(id: Int!): TaskComplete!
+  logs: [Log!]!
+  log(id: Int!): Log!
+  day(input: GroupDayScheduleInput!): [Schedule!]!
+  week(input: GroupDayScheduleInput!): [Schedule!]!
+  next(input: GroupScheduleInput!): [Schedule!]!
+  now(input: GroupScheduleInput!): [Schedule!]!
+}
+
+input ScheduleTicketBetweenInput {
+  groupId: Int!
+  dateFirst: DateTime!
+  dateLast: DateTime!
+}
+
+input ScheduleTicketInput {
+  groupId: Int!
+  dateAdd: DateTime!
+}
+
+input FindAvailableDisciplineInput {
+  groupId: Int!
+  periodId: Int!
+}
+
+input DisciplineInput {
+  term: String!
+}
+
+input DefaultGroupDisciplinesInput {
+  groupId: Int
+  periodId: Int
+  disciplineId: Int
+  userId: Int
+}
+
+input GroupDayScheduleInput {
+  group: String!
+  day: String!
+}
+
+input GroupScheduleInput {
+  group: String!
+}
+
+type Mutation {
+  createGroup(createGroupInput: CreateGroupInput!): Group!
+  createScheduleTickets(input: CreateScheduleTicketInput!): ScheduleTicket!
+  createUser(createUserInput: CreateUserInput!): User!
+  signIn(input: AuthSignInInput!): UserToken!
+  signUp(input: AuthSignUpInput!): UserToken!
+  auth: UserToken!
+  createGroupDiscipline(input: CreateGroupDisciplines!): GroupDiscipline!
+  createDisciplineLecturer(input: CreateDisciplineLecturerInput!): DisciplineLecturers!
+  removeDisciplineLecturer(input: DeleteDisciplineLecturerInput!): DisciplineLecturers!
+  createLecturer(input: CreateLecturerInput!): Lecturers!
+  updateDisciplineTask(updateDisciplineTaskInput: UpdateDisciplineTaskInput!): DisciplineTask!
+  createDisciplineTask(input: CreateDisciplineTaskInput!): DisciplineTask!
+  removeDisciplineTask(id: Int!): DisciplineTask!
+  createTaskComplete(createTaskCompleteInput: CreateTaskCompleteInput!): TaskComplete!
+  updateTaskComplete(updateTaskCompleteInput: UpdateTaskCompleteInput!): TaskComplete!
+  removeTaskComplete(id: Int!): TaskComplete!
+  createLog(createLogInput: CreateLogInput!): Log!
+  updateLog(updateLogInput: UpdateLogInput!): Log!
+  removeLog(id: Int!): Log!
+}
+
+input CreateGroupInput {
+  name: String
+}
+
+input CreateScheduleTicketInput {
+  text: String!
+  groupId: Int!
+  dateAdd: DateTime!
+}
+
+input CreateUserInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  login: String!
+  password: String!
+}
+
+input AuthSignInInput {
+  login: String!
+  password: String!
+}
+
+input AuthSignUpInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  login: String!
+  password: String!
+  rePassword: String!
+}
+
+input CreateGroupDisciplines {
+  groupId: Int!
+  periodId: Int!
+  disciplineId: Int!
+  finalTaskId: Int!
+  isCourse: Boolean!
+}
+
+input CreateDisciplineLecturerInput {
+  lecturerId: Int!
+  groupDisciplineId: Int!
+  role: RoleLecturer!
+}
+
+input DeleteDisciplineLecturerInput {
+  lecturerId: Int!
+  groupDisciplineId: Int!
+  role: RoleLecturer!
+}
+
+input CreateLecturerInput {
+  shortName: String!
+  fullName: String!
+}
+
+input UpdateDisciplineTaskInput {
+  """Group discipline Id"""
+  groupDisciplineId: Int
+
+  """Title"""
+  title: String
+
+  """Description"""
+  description: String
+
+  """Author"""
+  authorId: Int
+
+  """Index"""
+  index: Int
+  id: Int!
+}
+
+input CreateDisciplineTaskInput {
+  """Group discipline Id"""
+  groupDisciplineId: Int!
+
+  """Title"""
+  title: String!
+
+  """Description"""
+  description: String!
+
+  """Author"""
+  authorId: Int!
+
+  """Index"""
+  index: Int!
+}
+
+input CreateTaskCompleteInput {
+  status: TaskStatus!
+  userId: Int!
+  disciplineTaskId: Int!
+}
+
+input UpdateTaskCompleteInput {
+  status: TaskStatus!
+  userId: Int
+  disciplineTaskId: Int
+  id: Int!
+}
+
+input CreateLogInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateLogInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}

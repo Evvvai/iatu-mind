@@ -1,0 +1,111 @@
+/* Disciplines Item */
+/* ////////////////////////////////////////////////////// */
+
+.discipline-content {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  min-width: 300px;
+  flex-grow: 1;
+  flex-shrink: 1;
+
+  border-radius: 5px;
+  background-color: var(--background-color-lighter);
+  margin: 5px;
+  padding: 5px;
+
+  &:hover {
+    box-shadow: 0px 0px 6px var(--shadow-color-hover);
+    transition: all 0.2s ease-in;
+  }
+
+  &__hr {
+    display: flex;
+
+    margin: 0 auto;
+
+    min-height: 2px;
+    width: 90%;
+    background-color: var(--background-color-highlight);
+  }
+
+  &__info {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    gap: 5px;
+    overflow: hidden;
+
+    padding-bottom: 5px;
+
+    .info-item {
+      &__icon {
+        margin: auto 0;
+        max-width: 40px;
+        max-height: 40px;
+        background-color: var(--background-color-lighter);
+      }
+
+      &__name {
+        color: var(--font-color-base);
+        font-weight: 500;
+        font-size: 1.7rem;
+        min-height: 100px;
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+
+        border-left: 2px solid var(--border-base-color);
+        padding-left: 10px;
+      }
+    }
+  }
+
+  &__tip {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    height: 25px;
+    width: 100%;
+
+    padding: 0 10px;
+
+    .tip-item {
+      display: flex;
+      flex-direction: row;
+
+      padding: 0 5px;
+      gap: 1px;
+
+      &__icon {
+        width: 18px;
+        height: 18px;
+        fill: var(--font-color-base-darker);
+      }
+
+      &__value {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--font-color-base-darker);
+      }
+
+      &.last {
+        margin-left: auto;
+      }
+    }
+  }
+  transition: all 0.2s ease-in;
+}
+
+// @media screen and (max-width: 768px) {
+//   .disciplines {
+//     padding: 0;
+//   }
+// }
+
+/* ////////////////////////////////////////////////////// */

@@ -1,0 +1,97 @@
+/* Disciplines Period  */
+/* ////////////////////////////////////////////////////// */
+
+.disciplines-period {
+  position: relative;
+  height: 40px;
+  width: 100%;
+  background-color: var(--background-content);
+  box-shadow: 0 2px 8px 2px var(--background-content);
+  display: flex;
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 500px;
+    width: 100%;
+    padding: 5px 200px 0px 200px;
+  }
+
+  &__item {
+    background-color: transparent;
+    border: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    white-space: nowrap;
+
+    margin: 0;
+    color: var(--font-color-base-darker);
+    font-size: clamp(1rem, 10vw, 1.4rem);
+    font-weight: 700;
+    transform-origin: center;
+
+    &:hover {
+      color: var(--font-color-active);
+      transform: scale(1.1);
+      transition: all 0.2s ease-in;
+    }
+    transition: all 0.2s ease-in;
+
+    &.hr {
+      cursor: default;
+
+      margin: 0 10px;
+
+      width: 2px;
+      height: 20px;
+      background-color: var(--background-color-lighter);
+      transform: rotate(35deg);
+
+      &:last-child {
+        display: none;
+      }
+    }
+
+    &.active {
+      color: var(--font-color-active);
+      font-size: 1.7rem;
+    }
+  }
+
+  &__scroll {
+    background-color: transparent;
+    border: none;
+
+    &.left {
+    }
+    &.right {
+    }
+  }
+
+  &__background {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: left, right;
+    background-repeat: repeat-y, repeat-y;
+    background-size: auto, auto;
+  }
+}
+
+/* ////////////////////////////////////////////////////// */
+
+@media screen and (max-width: 768px) {
+  .disciplines-period__background {
+    display: none;
+  }
+}

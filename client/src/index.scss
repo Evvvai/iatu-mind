@@ -1,0 +1,136 @@
+:root {
+  --font-code: Monaco, Menlo, Consolas, Ubuntu Mono, Courier New, monospace;
+  --font-alt-hadline-letter-spacing: 0.18px;
+  --font-family-base: 'Montserrat', 'open sans', Helvetica, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --font-color-active: #3f7ee4;
+  --font-color-link: #70a1f0;
+  --font-color-link-hover: #4583e7;
+
+  --font-color-base-darker: #aaaaaa;
+  --font-color-base: #dddddd;
+
+  --font-color-i-base-darker: #161616;
+  --font-color-i-base: #383838;
+
+  --font-color-error: #ff4e2f;
+  --font-color-submit: #00a329;
+
+  --background-input: #3a3a3a;
+  --background-input-border: #575757;
+
+  --background-submit: #7289da;
+  --background-submit-darker: #5468b1;
+  --background-color: #b8babb;
+  --background-color-highlight: #606868;
+  --background-color-lighter: #303034;
+  --background-color-bright: #b2b3b4;
+  --background-content: #191919;
+  --background-inner-content: #16161657;
+
+  --icon-base-color: #999999;
+
+  --border-base-color: #444;
+  --border-base-color-darker: #333;
+  --border-base-color-lighter: #777;
+  --border-complete-status: rgb(100, 219, 86);
+
+  --shadow-color-base: rgb(15, 15, 15);
+  --shadow-color-base-darker: rgba(40, 40, 40);
+  --shadow-color-active: rgb(46, 157, 221);
+  --shadow-color-active-darker: rgba(40, 110, 220, 0.25);
+  --shadow-color-hover: rgb(45, 45, 45);
+
+  --transition-base-type: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+body {
+  background-attachment: fixed;
+  background-position: top center;
+  background-size: cover;
+  font-family: var(--font-family-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+
+  color: var(--font-color-base) !important;
+  background-color: var(--background-color) !important;
+}
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+
+  font-size: 10.5px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+body *::-moz-selection {
+  color: var(--font-color-main-lighter); /* Цвет текста */
+  background: var(--background-color-lighter); /* Цвет фона */
+}
+
+body *::-webkit-selection {
+  color: var(--font-color-main-lighter); /* Цвет текста */
+  background: var(--background-color-lighter); /* Цвет фона */
+}
+
+body *::selection {
+  color: var(--font-color-main-lighter); /* Цвет текста */
+  background: var(--background-color-lighter); /* Цвет фона */
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    color: inherit;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// @media screen and (max-width: 768px) {
+//   html {
+//     font-size: 5px;
+//   }
+// }
+
+.MuiPaper-root {
+  background-color: rgb(15, 15, 15) !important;
+
+  > * {
+    font-family: 'Montserrat';
+    color: var(--font-color-base);
+  }
+
+  * {
+    font-size: 1.5rem !important;
+  }
+}

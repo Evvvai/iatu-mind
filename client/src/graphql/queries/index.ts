@@ -1,0 +1,6 @@
+export * from './etc'
+export * from './discipline-task'
+export * from './group-discipline'
+export * from './schedule'
+export * from './discipline'
+export * from './lecturer'

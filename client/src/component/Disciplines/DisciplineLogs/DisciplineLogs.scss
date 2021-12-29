@@ -1,0 +1,217 @@
+/* Discipline Logs */
+/* ////////////////////////////////////////////////////// */
+
+.discipline-logs {
+  margin: 0 auto;
+  display: flex;
+  align-self: flex-start;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+.discipline-logs-header {
+  text-align: center;
+  color: var(--font-color-i-base-darker);
+  padding-top: 25px;
+}
+
+.discipline-logs-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  color: var(--font-color-i-base-darker);
+  height: 100vh;
+
+  .logs-part {
+    position: relative;
+
+    &::before {
+      width: 100%;
+      right: 0;
+      top: -35px;
+      text-align: center;
+      font-size: 2rem;
+      position: absolute;
+      content: attr(data-title);
+    }
+    padding: 10px 5px;
+    width: 100%;
+    box-shadow: 0px 0px 5px var(--border-base-color-lighter);
+    border-radius: 5px;
+    margin: 70px 10px 10px 10px;
+    flex-grow: 1;
+    flex-basis: 400px;
+    max-width: 700px;
+    background-color: var(--background-color-bright);
+
+    &__header {
+    }
+
+    &__hr {
+      width: 100%;
+      border: 0;
+      margin: 2px 0;
+      padding: 0;
+    }
+
+    &__item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: rgba($color: #000000, $alpha: 0.1);
+      }
+      transition: 0.1s all ease-in;
+
+      > * {
+        display: flex;
+        align-items: center;
+
+        min-height: 40px;
+        height: 100%;
+
+        padding: 0 5px;
+        width: 35%;
+        font-size: 1.4rem;
+      }
+
+      .item-status {
+        max-width: 30px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .status-line {
+          position: absolute;
+          width: 1px;
+          height: 100px;
+
+          background-color: var(--border-base-color-lighter);
+
+          &.complete {
+            background-color: var(--border-complete-status);
+            box-shadow: 0px 0px 3px var(--border-complete-status);
+          }
+        }
+
+        .status-circle {
+          position: absolute;
+          z-index: 1;
+
+          min-width: 16px;
+          min-height: 16px;
+
+          max-width: 16px;
+          max-height: 16px;
+
+          border-radius: 90%;
+
+          background-color: var(--background-color-bright);
+          border: 1px solid var(--border-base-color-lighter);
+          box-shadow: 2px 2px 1px var(--border-base-color-lighter);
+
+          &.complete {
+            border: 2px solid var(--border-complete-status);
+          }
+        }
+      }
+
+      &:first-child {
+        .item-status {
+          .status-line {
+            position: absolute;
+            width: 1px;
+            height: 15px;
+            bottom: 0;
+          }
+        }
+      }
+
+      &:last-child {
+        .item-status {
+          .status-line {
+            position: absolute;
+            width: 1px;
+            height: 15px;
+            top: 0;
+          }
+        }
+      }
+
+      .item-name {
+      }
+
+      .item-title {
+        color: var(--font-color-i-base);
+        width: 100%;
+        margin-left: auto;
+      }
+
+      .item-date {
+        font-size: 1.3rem;
+        min-width: 100px;
+        justify-content: center;
+        align-items: center;
+
+        &__tip {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: space-between;
+          font-size: 1.2rem;
+        }
+      }
+
+      .item-icon {
+        cursor: pointer;
+
+        max-width: 24px;
+        min-width: 24px;
+        width: 100%;
+        padding: 0;
+
+        border-radius: 90px;
+        overflow: hidden;
+
+        * {
+          pointer-events: none;
+          object-fit: cover;
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and(min-width:1368px) {
+  .discipline-logs {
+    margin-left: 50px;
+  }
+}
+
+@media screen and(max-width:425px) {
+  .discipline-logs-content {
+    .logs-part {
+      &__item {
+        .item-icon {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+/* ////////////////////////////////////////////////////// */

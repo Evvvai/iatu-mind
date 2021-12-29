@@ -1,0 +1,59 @@
+version: "3.7"
+services:
+  nest:
+    # image: ${IMAGE_NEST}
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    environment:
+      PORT: ${PORT_NEST}
+
+      DATABASE_HOST: db
+      DATABASE_PORT: ${PORT_DB}
+      DATABASE_USER: ${DB_USER}
+      DATABASE_PASSWORD: ${DB_ROOT_PASSWORD}
+    env_file:
+      - .env.server
+    ports:
+      - ${PORT_NEST}:${PORT_NEST}
+    networks:
+      - default
+    depends_on:
+      - db
+    restart: always
+    command: npm run start:dev
+  react:
+    # image: ${IMAGE_REACT}
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    environment:
+      REACT_APP_BACKEND_URL: ${REACT_APP_BACKEND_URL}
+    env_file:
+      - .env.client
+    ports:
+      - ${PORT_REACT}:${PORT_REACT}
+    depends_on:
+      - nest
+    networks:
+      - default
+    restart: always
+    command: npm start
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    ports:
+      - ${PORT_DB}:${PORT_DB}
+    expose:
+      - ${PORT_DB}
+    networks:
+      - default
+    volumes:
+      - mysqldata:/var/lib/mysql
+volumes:
+  mysqldata:

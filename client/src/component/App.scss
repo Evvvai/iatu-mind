@@ -1,0 +1,44 @@
+/* App */
+/* ////////////////////////////////////////////////////// */
+
+.main {
+  position: relative;
+  font-family: var(--font-family-base);
+  padding-top: 50px;
+  min-height: calc(100vh - 40px);
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  animation: fadein 0.25s ease-in;
+  overflow: hidden;
+}
+
+.main-loading {
+  height: 100vh;
+
+  display: grid;
+  place-content: center;
+
+  animation: fadein 0.25s ease-in;
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 9.5px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  html {
+    font-size: 8px;
+  }
+}
+
+/* ////////////////////////////////////////////////////// */
+
+.MuiInput-underline:before {
+  border-bottom: 0.1px !important;
+}
